@@ -5,8 +5,9 @@ import models.losses as losses
 import models.models as models
 import dataloaders.dataloaders as dataloaders
 import utils.utils as utils
-from utils.fid_scores import fid_pytorch
-import config
+# from utils.fid_scores import fid_pytorch
+import oasis.config as config
+from tqdm import tqdm
 
 
 #--- read options ---#
@@ -31,7 +32,7 @@ optimizerD = torch.optim.Adam(model.module.netD.parameters(), lr=opt.lr_d, betas
 #--- the training loop ---#
 already_started = False
 start_epoch, start_iter = utils.get_start_iters(opt.loaded_latest_iter, len(dataloader))
-for epoch in range(start_epoch, opt.num_epochs):
+for epoch in tqdm(range(start_epoch, opt.num_epochs)):
     for i, data_i in enumerate(dataloader):
         if not already_started and i < start_iter:
             continue

@@ -7,3 +7,5 @@ __pycache__/
 util/__pycache__/
 .idea/
 .vscode/
+angio_dataset/
+.venv/

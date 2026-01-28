@@ -2,7 +2,7 @@
 import models.models as models
 import dataloaders.dataloaders as dataloaders
 import utils.utils as utils
-import config
+import oasis.config as config
 
 
 #--- read options ---#

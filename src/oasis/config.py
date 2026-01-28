@@ -21,6 +21,7 @@ def read_arguments(train=True):
     print_options(opt, parser)
     if train:
         save_options(opt, parser)
+    # opt.gpu_ids = "-1"
     return opt
 
 
