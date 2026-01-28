@@ -1,7 +1,7 @@
 import torch
 import torch.nn.functional as F
 import torch.nn as nn
-from models.vggloss import VGG19
+from oasis.models.vggloss import VGG19
 
 
 class losses_computer():

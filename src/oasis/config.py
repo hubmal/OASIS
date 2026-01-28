@@ -1,7 +1,7 @@
 import argparse
 import pickle
 import os
-import utils.utils as utils
+import oasis.utils.utils as utils
 
 
 def read_arguments(train=True):

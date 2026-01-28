@@ -1,12 +1,12 @@
-from models.sync_batchnorm import DataParallelWithCallback
-import models.generator as generators
-import models.discriminator as discriminators
+from oasis.models.sync_batchnorm import DataParallelWithCallback
+import oasis.models.generator as generators
+import oasis.models.discriminator as discriminators
 import os
 import copy
 import torch
 import torch.nn as nn
 from torch.nn import init
-import models.losses as losses
+import oasis.models.losses as losses
 
 
 class OASIS_model(nn.Module):

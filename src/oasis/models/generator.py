@@ -1,5 +1,5 @@
 import torch.nn as nn
-import models.norms as norms
+import oasis.models.norms as norms
 import torch
 import torch.nn.functional as F
 

@@ -1,5 +1,5 @@
 import torch.nn.utils.spectral_norm as spectral_norm
-from models.sync_batchnorm import SynchronizedBatchNorm2d
+from oasis.models.sync_batchnorm import SynchronizedBatchNorm2d
 import torch.nn as nn
 import torch.nn.functional as F
 

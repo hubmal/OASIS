@@ -3,7 +3,7 @@ import numpy as np
 import random
 import time
 import os
-import models.models as models
+import oasis.models.models as models
 import matplotlib.pyplot as plt
 from PIL import Image
 
