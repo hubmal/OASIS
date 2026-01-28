@@ -10,9 +10,9 @@ import oasis.config as config
 from tqdm import tqdm
 
 
-def train():
+def train(args):
     #--- read options ---#
-    opt = config.read_arguments(train=True)
+    opt = config.read_arguments(train=True, args=args)
 
     #--- create utils ---#
     timer = utils.timer(opt)

@@ -4,16 +4,16 @@ import os
 import oasis.utils.utils as utils
 
 
-def read_arguments(train=True):
+def read_arguments(train=True, args=[]):
     parser = argparse.ArgumentParser()
     parser = add_all_arguments(parser, train)
     parser.add_argument('--phase', type=str, default='train')
-    opt = parser.parse_args()
+    opt = parser.parse_args(args)
     if train:
         set_dataset_default_lm(opt, parser)
         if opt.continue_train:
             update_options_from_file(opt, parser)
-    opt = parser.parse_args()
+    opt = parser.parse_args(args)
     opt.phase = 'train' if train else 'test'
     if train:
         opt.loaded_latest_iter = 0 if not opt.continue_train else load_iter(opt)
