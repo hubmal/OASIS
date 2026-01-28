@@ -63,19 +63,19 @@ for epoch in range(start_epoch, opt.num_epochs):
             utils.save_networks(opt, cur_iter, model)
         if cur_iter % opt.freq_save_latest == 0:
             utils.save_networks(opt, cur_iter, model, latest=True)
-        if cur_iter % opt.freq_fid == 0 and cur_iter > 0:
-            is_best = fid_computer.update(model, cur_iter)
-            if is_best:
-                utils.save_networks(opt, cur_iter, model, best=True)
+        # if cur_iter % opt.freq_fid == 0 and cur_iter > 0:
+        #     is_best = fid_computer.update(model, cur_iter)
+        #     if is_best:
+        #         utils.save_networks(opt, cur_iter, model, best=True)
         visualizer_losses(cur_iter, losses_G_list+losses_D_list)
 
 #--- after training ---#
 utils.update_EMA(model, cur_iter, dataloader, opt, force_run_stats=True)
 utils.save_networks(opt, cur_iter, model)
 utils.save_networks(opt, cur_iter, model, latest=True)
-is_best = fid_computer.update(model, cur_iter)
-if is_best:
-    utils.save_networks(opt, cur_iter, model, best=True)
+# is_best = fid_computer.update(model, cur_iter)
+# if is_best:
+#     utils.save_networks(opt, cur_iter, model, best=True)
 
 print("The training has successfully finished")
 
