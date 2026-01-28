@@ -8,6 +8,8 @@ def get_dataset_name(mode):
         return "CityscapesDataset"
     if mode == "coco":
         return "CocoStuffDataset"
+    if mode == "angio":
+        return "AngioDataset"
     else:
         ValueError("There is no such dataset regime as %s" % mode)
 

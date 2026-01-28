@@ -33,9 +33,10 @@ def add_all_arguments(parser, train):
     parser.add_argument('--no_spectral_norm', action='store_true', help='this option deactivates spectral norm in all layers')
     parser.add_argument('--batch_size', type=int, default=1, help='input batch size')
     parser.add_argument('--dataroot', type=str, default='./datasets/cityscapes/', help='path to dataset root')
-    parser.add_argument('--dataset_mode', type=str, default='coco', help='this option indicates which dataset should be loaded')
+    parser.add_argument('--dataset_mode', type=str, default='angio', help='this option indicates which dataset should be loaded')
     parser.add_argument('--no_flip', action='store_true', help='if specified, do not flip the images for data argumentation')
     parser.add_argument('--num_workers', type=int, default=0, help='num_workers argument for dataloader')
+    parser.add_argument('--input_channels', type=int, default=1, help='number of input image channels')
 
     # for generator
     parser.add_argument('--num_res_blocks', type=int, default=6, help='number of residual blocks in G and D')
@@ -48,7 +49,7 @@ def add_all_arguments(parser, train):
     parser.add_argument('--z_dim', type=int, default=64, help="dimension of the latent z vector")
 
     if train:
-        parser.add_argument('--freq_print', type=int, default=1000, help='frequency of showing training results')
+        parser.add_argument('--freq_print', type=int, default=300, help='frequency of showing training results')
         parser.add_argument('--freq_save_ckpt', type=int, default=20000, help='frequency of saving the checkpoints')
         parser.add_argument('--freq_save_latest', type=int, default=10000, help='frequency of saving the latest model')
         parser.add_argument('--freq_smooth_loss', type=int, default=250, help='smoothing window for loss visualization')
@@ -56,7 +57,7 @@ def add_all_arguments(parser, train):
         parser.add_argument('--freq_fid', type=int, default=5000, help='frequency of saving the fid score (in training iterations)')
         parser.add_argument('--continue_train', action='store_true', help='resume previously interrupted training')
         parser.add_argument('--which_iter', type=str, default='latest', help='which epoch to load when continue_train')
-        parser.add_argument('--num_epochs', type=int, default=200, help='number of epochs to train')
+        parser.add_argument('--num_epochs', type=int, default=1000, help='number of epochs to train')
         parser.add_argument('--beta1', type=float, default=0.0, help='momentum term of adam')
         parser.add_argument('--beta2', type=float, default=0.999, help='momentum term of adam')
         parser.add_argument('--lr_g', type=float, default=0.0001, help='G learning rate, default=0.0001')
@@ -76,6 +77,9 @@ def add_all_arguments(parser, train):
 
 def set_dataset_default_lm(opt, parser):
     if opt.dataset_mode == "ade20k":
+        parser.set_defaults(lambda_labelmix=10.0)
+        parser.set_defaults(EMA_decay=0.9999)
+    if opt.dataset_mode == "angio":
         parser.set_defaults(lambda_labelmix=10.0)
         parser.set_defaults(EMA_decay=0.9999)
     if opt.dataset_mode == "cityscapes":

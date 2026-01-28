@@ -217,6 +217,7 @@ class image_saver():
 def tens_to_im(tens):
     out = (tens + 1) / 2
     out.clamp(0, 1)
+    out = out.repeat(3, 1, 1)
     return np.transpose(out.detach().cpu().numpy(), (1, 2, 0))
 
 

@@ -18,7 +18,7 @@ visualizer_losses = utils.losses_saver(opt)
 losses_computer = losses.losses_computer(opt)
 dataloader, dataloader_val = dataloaders.get_dataloaders(opt)
 im_saver = utils.image_saver(opt)
-fid_computer = fid_pytorch(opt, dataloader_val)
+# fid_computer = fid_pytorch(opt, dataloader_val)
 
 #--- create models ---#
 model = models.OASIS_model(opt)
